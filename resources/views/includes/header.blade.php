@@ -31,7 +31,8 @@
               <img src="{{ asset('img/profile.png') }}" class="img-circle" alt="User Image">
 
               <p>
-                {{ Auth::user()->name }} - {{ Auth::user()->designation }}
+                {{ Auth::user()->name }} -
+                @if(Auth::user()->user_role == 1) {{ 'Admin' }} @endif
                 <small>Member since {{ substr(Auth::user()->created_at,0,10) }}</small>
               </p>
             </li>
@@ -42,7 +43,7 @@
                 <a href="#" class="btn btn-primary btn-flat">Profile</a>
               </div>
               <div class="pull-right">
-                <a href="javascript;" class="btn btn-primary btn-flat" @click.prevent='logOut'>Sign out</a>
+                <a href="{{ '/logout' }}" class="btn btn-primary btn-flat">Logout</a>
               </div>
             </li>
           </ul>

@@ -2,7 +2,15 @@
 
 @section('content')
 <div class="container" style="margin-top: 100px;">
+
     <div class="row justify-content-center">
+
+        @if ($message = Session::get('message'))
+        <div class="alert alert-info alert-block col-md-8"  style="text-align: center; background: rgb(255, 255, 255) none repeat scroll 0% 0%;  color: #000; background-color: #e2f0fb; border-color: #3490dc;">
+            <button type="button" class="close" data-dismiss="alert">×</button> 
+            <strong>{{ $message }}</strong>
+        </div>
+        @endif
         <div class="col-md-8">
             <div class="card" style="background: #fff;">
                 <div class="card-header" style="text-align: center;">{{ __('Somitty Login') }}</div>
