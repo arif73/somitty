@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -12,8 +14,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('user.index');
+    {   
+        $users = User::all();
+        return view('user.index', compact('users'));
     }
 
     /**
@@ -23,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -34,51 +37,47 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'password' => 'required|min:8',
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'user_role' => 'required',
+        ]);
+        
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->user_role = $request->user_role;
+        $user->status = 1;
+        $user->save();
+        return redirect()->back()->with('msg', 'User Added!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function change_status($id)
     {
-        //
+        $user = User::find($id);
+        if ($user->status == 1) 
+        {
+            $user->update(['status' => 0]);
+        }
+        else
+        {
+            $user->update(['status' => 1]);
+        }
+
+        return redirect()->back()->with('msg', 'Status Changed!'); 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function change_pass(Request $request)
     {
-        //
+        $request->validate([
+            'password' => 'required|min:8',
+        ]);
+        $user = User::find($request->id);
+        $user->update(['password' => Hash::make($request->password)]);
+        return redirect()->back()->with('msg', 'Password Changed!'); 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

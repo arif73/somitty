@@ -38,7 +38,7 @@
               <a href="{{ route('user.index') }}"><i class="fa fa-circle-o"></i>User List</a>
           </li>
           <li>
-              <a href=""><i class="fa fa-circle-o"></i>Add User</a>
+              <a href="{{ route('user.create') }}"><i class="fa fa-circle-o"></i>Add User</a>
           </li>
       </ul>
   </li>
