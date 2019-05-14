@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {   
-        $users = User::all();
+        $users = User::where('user_role', 1)->get();
         return view('user.index', compact('users'));
     }
 
@@ -41,17 +41,16 @@ class UserController extends Controller
             'password' => 'required|min:8',
             'name' => 'required',
             'email' => 'required|unique:users',
-            'user_role' => 'required',
         ]);
         
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->user_role = $request->user_role;
+        $user->user_role = 1;
         $user->status = 1;
         $user->save();
-        return redirect()->back()->with('msg', 'User Added!');
+        return redirect()->back()->with('msg', 'Admin Added!');
     }
 
     public function change_status($id)

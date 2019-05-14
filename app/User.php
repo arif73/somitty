@@ -18,4 +18,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password', 'status', 'user_role',
     ];
+
+    public function member()
+    {
+    	return $this->belongsTo(Member::class);
+    }
 }

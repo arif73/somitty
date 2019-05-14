@@ -34,7 +34,6 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Role</th>
                             <th>Status</th>
                             <th>Change Password</th>
 
@@ -48,7 +47,6 @@
                         	<td>{{ $user->id }}</td>
                         	<td>{{ $user->name }}</td>
                         	<td>{{ $user->email }}</td>
-                        	<td>{{ $user->user_role == 1 ? 'SuperAdmin' : 'User' }}</td>
                         	<td>{{ $user->status == 1 ? 'Active' : 'Inactive' }}
                         		<span>
                         			<a href="/change-status/{{$user->id}}" class="btn btn-warning btn-sm">Change</a>

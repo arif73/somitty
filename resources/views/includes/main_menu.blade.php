@@ -14,10 +14,10 @@
       </div>
     </div>
 
-    <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MAIN MENU</li>
-
+      
+      {{-- Dashboard --}}
       <li class="treeview">
         <li>
           <a href="{{ url('/') }}">
@@ -25,23 +25,44 @@
           </a>
         </li>
       </li>
-
+  
+  {{-- Admin --}}
   <li class="treeview">
       <a href="{{ route('user.index') }}">
-          <i class="fa fa-users"></i> <span>Users</span>
+          <i class="fa fa-user"></i> <span>Admin</span>
           <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
           </span>
       </a>
-      <ul class="treeview-menu" style="display: none;">
+      <ul class="treeview-menu">
           <li>
-              <a href="{{ route('user.index') }}"><i class="fa fa-circle-o"></i>User List</a>
+              <a href="{{ route('user.index') }}"><i class="fa fa-circle-o"></i>Admin List</a>
           </li>
           <li>
-              <a href="{{ route('user.create') }}"><i class="fa fa-circle-o"></i>Add User</a>
+              <a href="{{ route('user.create') }}"><i class="fa fa-circle-o"></i>Add Admin</a>
           </li>
       </ul>
   </li>
+
+  {{-- Member --}}
+  <li class="treeview">
+      <a href="{{ route('member.index') }}">
+          <i class="fa fa-users"></i> <span>Member</span>
+          <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+          </span>
+      </a>
+      <ul class="treeview-menu">
+          <li>
+              <a href="{{ route('member.index') }}"><i class="fa fa-circle-o"></i>Member List</a>
+          </li>
+          <li>
+              <a href="{{ route('member.create') }}"><i class="fa fa-circle-o"></i>Add Member</a>
+          </li>
+      </ul>
+  </li>
+
+
 </section>
   <!-- /.sidebar -->
 

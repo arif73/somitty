@@ -56,19 +56,6 @@
 								</div>
 								<div class="col-md-3"></div>
 							</div>
-
-							<div class="form-group row">
-								<div class="col-md-3"></div>
-								<div class="col-md-1"> <label>Role</label> </div>
-								<div class="col-md-5">
-									<select name="user_role" class="form-control" required="">
-										<option value="" selected>Select</option>
-										<option value="1">SuperAdmin</option>
-										<option value="2">User</option>
-									</select>
-								</div>
-								<div class="col-md-3"></div>
-							</div>
 						</div>
 						<!-- /.box-body -->
 						<div class="box-footer">

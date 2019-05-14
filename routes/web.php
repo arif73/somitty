@@ -20,6 +20,10 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 Route::get('/dashboard', 'HomeController@index');
 
+/*===============   Admin    ===================*/
 Route::resource('user' ,'UserController');
 Route::get('change-status/{id}', 'UserController@change_status');
 Route::post('change-pass', 'UserController@change_pass');
+
+/*===============   Member   ===================*/
+Route::resource('member' ,'MemberController');
