@@ -20,7 +20,7 @@
       {{-- Dashboard --}}
       <li class="treeview">
         <li>
-          <a href="{{ url('/') }}">
+          <a href="{{ url('/dashboard') }}">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>

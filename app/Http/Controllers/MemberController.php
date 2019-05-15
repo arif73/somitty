@@ -12,7 +12,7 @@ class MemberController extends Controller
     public function index()
     {
     	$members = Member::all();
-    	return view('members.index');
+    	return view('members.index', compact('members'));
     }
 
     public function create()
@@ -58,7 +58,7 @@ class MemberController extends Controller
     	if($request->hasFile('photo'))
     	{
     	    $image = $request->photo;
-    	    $ext = $image->getClientOriginalExtension();
+    	    $ext = $image->extension();
     	    $filename = uniqid().'.'.$ext;
     	    $image->storeAs('public',$filename);
     	    $member->photo = $filename;
@@ -67,5 +67,49 @@ class MemberController extends Controller
     	$member->save();
 
     	return redirect()->back()->with('msg', 'Member Added!');
+    }
+
+    public function show($id)
+    {
+        $member = Member::find($id);
+        return view('members.show', compact('member'));
+    }
+
+    public function edit($id)
+    {   
+        $member = Member::find($id);
+        return view('members.edit', compact('member'));
+    }
+
+    public function update(Request $request, $id)
+    {   
+        $member = Member::find($id);
+
+        $request->validate([
+            'name' => 'required',
+            'dob' => 'required',
+            'nid' => 'required',
+            'gender' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+        ]);
+
+        $user = User::find($request->user_id);
+        $user->update([ 'email' => $request->email, 'name' => $request->name ]);
+
+        $member = Member::find($id);
+        $member->name = $request->name;
+        $member->gender = $request->gender;
+        $member->dob = $request->dob;
+        $member->father = $request->father;
+        $member->mother = $request->mother;
+        $member->nid = $request->nid;
+        $member->phone = $request->phone;
+        $member->present_addr = $request->present_addr;
+        $member->permanent_addr = $request->permanent_addr;
+        $member->spouse = $request->spouse;
+        $member->save();
+
+        return redirect()->route('member.index')->with('msg', 'Update Successful!');
     }
 }

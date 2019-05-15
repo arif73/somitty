@@ -18,7 +18,7 @@
 
 <div class="box">
     <div class="box-header" style="text-align: center;">
-        <h1 class="box-title">Add User</h1>
+        <h1 class="box-title">Add an Admin</h1>
     </div>
 
 <section class="content">

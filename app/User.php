@@ -2,9 +2,10 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
+use App\Member;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -21,6 +22,6 @@ class User extends Authenticatable
 
     public function member()
     {
-    	return $this->belongsTo(Member::class);
+    	return $this->hasOnes(Member::class);
     }
 }

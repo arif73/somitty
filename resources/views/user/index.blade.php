@@ -18,7 +18,7 @@
 
 <div class="box">
     <div class="box-header">
-        <h1 class="box-title">User List</h1>
+        <h1 class="box-title">Admin List</h1>
     </div>
 
 <section class="content">

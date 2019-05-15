@@ -18,7 +18,7 @@
 
 <div class="box">
     <div class="box-header" style="text-align: center;">
-        <h1 class="box-title">Add Member</h1>
+        <h1 class="box-title">Update Member</h1>
     </div>
 
 <section class="content">
@@ -26,15 +26,17 @@
         <div class="col-xs-12">
 	    	<div class="box">
 	       		<div class="box-body">
-					<form action="{{ route('member.store') }}" method="POST" enctype="multipart/form-data">
+					<form action="{{ route('member.update', $member->id) }}" method="POST" enctype="multipart/form-data">
 						@csrf
+						@method('PUT')
+						<input type="hidden" name="user_id" value="{{ $member->user_id }}">
 						<div class="box-body">
 							{{-- name --}}
 							<div class="form-group row">
 								<div class="col-md-2"></div>
 								<div class="col-md-2"> <label for="name" style="float: right;">Name :</label> </div>
 								<div class="col-md-5">
-									<input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Enter Name" required="">
+									<input type="text" name="name" value="{{ $member->name }}" class="form-control" placeholder="Enter Name" required="">
 								</div>
 								<div class="col-md-3"></div>
 							</div>
@@ -44,17 +46,7 @@
 								<div class="col-md-2"></div>
 								<div class="col-md-2"> <label for="email" style="float: right;">Email :</label> </div>
 								<div class="col-md-5">
-									<input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Enter Email" required="">
-								</div>
-								<div class="col-md-3"></div>
-							</div>
-							
-							{{-- password --}}
-							<div class="form-group row">
-								<div class="col-md-2"></div>
-								<div class="col-md-2"> <label for="password" style="float: right;">Password :</label> </div>
-								<div class="col-md-5">
-									<input type="password" name="password" value="{{ old('password') }}" class="form-control" placeholder="Enter Password" required="">
+									<input type="email" name="email" value="{{ $member->user->email }}" class="form-control" placeholder="Enter Email" required="">
 								</div>
 								<div class="col-md-3"></div>
 							</div>
@@ -65,9 +57,8 @@
 								<div class="col-md-2"> <label for="gender" style="float: right;">Select :</label> </div>
 								<div class="col-md-5">
 									<select name="gender" class="form-control">
-										<option value="	">Select</option>
-										<option value="male">Male</option>
-										<option value="female">Female</option>
+										<option value="male" {{ $member->gender == 'male' ? 'selected' : '' }}>Male</option>
+										<option value="female" {{ $member->gender == 'female' ? 'selected' : '' }}>Female</option>
 									</select>
 								</div>
 								<div class="col-md-3"></div>
@@ -78,7 +69,7 @@
 								<div class="col-md-2"></div>
 								<div class="col-md-2"> <label for="dob" style="float: right;">Date of Birth :</label> </div>
 								<div class="col-md-5">
-									<input type="date" name="dob" value="{{ old('dob') }}" class="form-control" placeholder="Enter Date of Birth" required="">
+									<input type="date" name="dob" value="{{ $member->dob }}" class="form-control" placeholder="Enter Date of Birth" required="">
 								</div>
 								<div class="col-md-3"></div>
 							</div>
@@ -88,7 +79,7 @@
 								<div class="col-md-2"></div>
 								<div class="col-md-2"> <label for="father" style="float: right;">Father :</label> </div>
 								<div class="col-md-5">
-									<input type="text" name="father" value="{{ old('father') }}" class="form-control" placeholder="Enter father's name" required="">
+									<input type="text" name="father" value="{{ $member->father }}" class="form-control" placeholder="Enter father's name" required="">
 								</div>
 								<div class="col-md-3"></div>
 							</div>
@@ -98,7 +89,7 @@
 								<div class="col-md-2"></div>
 								<div class="col-md-2"> <label for="mother" style="float: right;">Mother :</label> </div>
 								<div class="col-md-5">
-									<input type="text" name="mother" value="{{ old('mother') }}" class="form-control" placeholder="Enter mother's name" required="">
+									<input type="text" name="mother" value="{{ $member->mother }}" class="form-control" placeholder="Enter mother's name" required="">
 								</div>
 								<div class="col-md-3"></div>
 							</div>
@@ -108,7 +99,7 @@
 								<div class="col-md-2"></div>
 								<div class="col-md-2"> <label for="nid" style="float: right;">National ID Card(NID) :</label> </div>
 								<div class="col-md-5">
-									<input type="text" name="nid" value="{{ old('nid') }}" class="form-control" placeholder="Enter NID Number" required="">
+									<input type="text" name="nid" value="{{ $member->nid }}" class="form-control" placeholder="Enter NID Number" required="">
 								</div>
 								<div class="col-md-3"></div>
 							</div>
@@ -118,7 +109,7 @@
 								<div class="col-md-2"></div>
 								<div class="col-md-2"> <label for="phone" style="float: right;">Phone Number :</label> </div>
 								<div class="col-md-5">
-									<input type="text" name="phone" value="{{ old('phone') }}" class="form-control" placeholder="Enter Phone Number" required="">
+									<input type="text" name="phone" value="{{ $member->phone }}" class="form-control" placeholder="Enter Phone Number" required="">
 								</div>
 								<div class="col-md-3"></div>
 							</div>
@@ -128,7 +119,7 @@
 								<div class="col-md-2"></div>
 								<div class="col-md-2"> <label for="present_addr" style="float: right;">Present Address :</label> </div>
 								<div class="col-md-5">
-									<textarea name="present_addr" class="form-control" placeholder="Enter Present Address" required="">{{ old('present_addr') }}</textarea> 
+									<textarea name="present_addr" class="form-control" placeholder="Enter Present Address" required="">{{ $member->present_addr }}</textarea> 
 								</div>
 								<div class="col-md-3"></div>
 							</div>
@@ -138,7 +129,7 @@
 								<div class="col-md-2"></div>
 								<div class="col-md-2"> <label for="permanent_addr" style="float: right;">Permanent Address :</label> </div>
 								<div class="col-md-5">
-									<textarea name="permanent_addr" class="form-control" placeholder="Enter Permanent Address" required="">{{ old('permanent_addr') }}</textarea> 
+									<textarea name="permanent_addr" class="form-control" placeholder="Enter Permanent Address" required="">{{ $member->permanent_addr }}</textarea> 
 								</div>
 								<div class="col-md-3"></div>
 							</div>
@@ -148,17 +139,7 @@
 								<div class="col-md-2"></div>
 								<div class="col-md-2"> <label for="spouse" style="float: right;">Spouse Name :</label> </div>
 								<div class="col-md-5">
-									<input type="text" name="spouse" value="{{ old('spouse') }}" class="form-control" placeholder="Enter Spouse Name" required="">
-								</div>
-								<div class="col-md-3"></div>
-							</div>
-
-							{{-- photo --}}
-							<div class="form-group row">
-								<div class="col-md-2"></div>
-								<div class="col-md-2"> <label for="photo" style="float: right;">Photo :</label> </div>
-								<div class="col-md-5">
-									<input type="file" name="photo" class="form-control custom-file-input">
+									<input type="text" name="spouse" value="{{ $member->spouse }}" class="form-control" placeholder="Enter Spouse Name" required="">
 								</div>
 								<div class="col-md-3"></div>
 							</div>
@@ -170,7 +151,7 @@
 								<div class="col-md-2"></div>
 								<div class="col-md-2"></div>
 								<div class="col-md-5">
-									<button type="submit" class="btn btn-success btn-block">Submit</button>
+									<button type="submit" class="btn btn-success btn-block">Update</button>
 								</div>
 								<div class="col-md-3"></div>
 							</div>

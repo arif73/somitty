@@ -1,10 +1,10 @@
 <header class="main-header">
   <!-- Logo -->
-  <a href="{{ url('/') }}" class="logo">
+  <a href="{{ url('/dashboard') }}" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class="logo-mini"><b>DMS</b></span>
+    <span class="logo-mini" style="font-size: 80% !important;">Somity</span>
     <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg"><b>DMS</b></span>
+    <span class="logo-lg"><b>SOMITY</b></span>
   </a>
   <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top">
@@ -39,9 +39,9 @@
             
             <!-- Menu Footer-->
             <li class="user-footer">
-              <div class="pull-left">
+              <!-- <div class="pull-left">
                 <a href="#" class="btn btn-primary btn-flat">Profile</a>
-              </div>
+              </div> -->
               <div class="pull-right">
                 <a href="{{ '/logout' }}" class="btn btn-primary btn-flat">Logout</a>
               </div>
