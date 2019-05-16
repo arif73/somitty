@@ -27,3 +27,13 @@ Route::post('change-pass', 'UserController@change_pass');
 
 /*===============   Member   ===================*/
 Route::resource('member' ,'MemberController');
+
+/*===============   Cash In   ===================*/
+Route::get('cash-in', 'CashInController@index');
+Route::get('cash-in/create', 'CashInController@create');
+Route::post('cash-in/store', 'CashInController@store');
+
+/*===============   Cash Out   ===================*/
+Route::get('cash-out', 'CashOutController@index');
+Route::get('cash-out/create', 'CashOutController@create');
+Route::post('cash-out/store', 'CashOutController@store');

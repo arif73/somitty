@@ -62,6 +62,42 @@
       </ul>
   </li>
 
+  {{-- Cash In --}}
+  <li class="treeview">
+      <a href="{{ url('/cash-in') }}">
+          <i class="fa fa-money"></i> <span>Cash In</span>
+          <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+          </span>
+      </a>
+      <ul class="treeview-menu">
+          <li>
+              <a href="{{ url('/cash-in') }}"><i class="fa fa-circle-o"></i>All Cash In</a>
+          </li>
+          <li>
+              <a href="{{ url('/cash-in/create') }}"><i class="fa fa-circle-o"></i>Add Cash In</a>
+          </li>
+      </ul>
+  </li>  
+
+  {{-- Cash Out --}}
+  <li class="treeview">
+      <a href="{{ url('/cash-out') }}">
+          <i class="fa fa-money"></i> <span>Cash Out</span>
+          <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+          </span>
+      </a>
+      <ul class="treeview-menu">
+          <li>
+              <a href="{{ url('/cash-out') }}"><i class="fa fa-circle-o"></i>All Cash Out</a>
+          </li>
+          <li>
+              <a href="{{ url('/cash-out/create') }}"><i class="fa fa-circle-o"></i>Add Cash Out</a>
+          </li>
+      </ul>
+  </li>
+
 
 </section>
   <!-- /.sidebar -->

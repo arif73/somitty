@@ -11,4 +11,14 @@ class Member extends Model
     {
     	return $this->belongsTo(User::class);
     }
+
+    public function cash_in()
+    {
+    	return $this->hasMany(CashIn::class);
+    }    
+
+    public function cash_out()
+    {
+    	return $this->hasMany(CashOut::class);
+    }
 }
