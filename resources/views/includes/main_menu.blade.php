@@ -98,6 +98,15 @@
       </ul>
   </li>
 
+  {{-- Reports --}}
+  <li class="treeview">
+    <li>
+      <a href="{{ url('/reports/create') }}">
+        <i class="fa fa-line-chart"></i> <span>Reports</span>
+      </a>
+    </li>
+  </li> 
+
 
 </section>
   <!-- /.sidebar -->

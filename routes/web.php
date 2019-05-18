@@ -37,3 +37,7 @@ Route::post('cash-in/store', 'CashInController@store');
 Route::get('cash-out', 'CashOutController@index');
 Route::get('cash-out/create', 'CashOutController@create');
 Route::post('cash-out/store', 'CashOutController@store');
+
+/*===============   Reports   ===================*/
+Route::get('/reports/create', 'ReportController@create');
+Route::post('reports', 'ReportController@index');

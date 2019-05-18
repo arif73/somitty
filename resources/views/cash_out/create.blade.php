@@ -18,7 +18,7 @@
 
 <div class="box">
     <div class="box-header" style="text-align: center;">
-        <h1 class="box-title">Add Cash In</h1>
+        <h1 class="box-title">Add Cash Out</h1>
     </div>
 
 <section class="content">
@@ -87,7 +87,7 @@
 								<div class="col-md-3"></div>
 								<div class="col-md-1"></div>
 								<div class="col-md-5">
-									<button type="submit" class="btn btn-success btn-block">Add Cash In</button>
+									<button type="submit" class="btn btn-success btn-block">Add Cash Out</button>
 								</div>
 								<div class="col-md-3"></div>
 							</div>

@@ -91,9 +91,9 @@
 
 							<div class="form-group row">
 								<div class="col-md-2"></div>
-								<div class="col-md-2"> <label for="investment_withdraw">Investment Withdraw :</label> </div>
+								<div class="col-md-2"> <label for="comments">Comments :</label> </div>
 								<div class="col-md-5">
-									<input type="number" name="investment_withdraw" value="{{ old('investment_withdraw') }}" class="form-control" required>
+									<input type="text" name="comments" value="{{ old('comments') }}" class="form-control">
 								</div>
 								<div class="col-md-3"></div>
 							</div>

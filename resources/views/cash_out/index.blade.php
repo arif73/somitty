@@ -3,7 +3,7 @@
 
 <div class="box">
     <div class="box-header">
-        <h1 class="box-title">All Cash In</h1>
+        <h1 class="box-title">All Cash Out</h1>
     </div>
 
 <section class="content">

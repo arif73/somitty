@@ -32,10 +32,9 @@ class CashInController extends Controller
     	    'admistration' => 'required',
     	    'fine' => 'required',
     	    'profit' => 'required',
-    	    'investment_withdraw' => 'required',
     	]);
 
-    	$total_credit = $request->premium + $request->admistration + $request->fine + $request->profit + $request->investment_withdraw;
+    	$total_credit = $request->premium + $request->admistration + $request->fine + $request->profit;
 
     	$cash_in = new CashIn;
     	$cash_in->member_id = $request->member;
@@ -44,7 +43,7 @@ class CashInController extends Controller
     	$cash_in->admistration = $request->admistration;
     	$cash_in->fine = $request->fine;
     	$cash_in->profit = $request->profit;
-    	$cash_in->investment_withdraw = $request->investment_withdraw;
+    	$cash_in->comments = $request->comments;
     	$cash_in->total_credit = $total_credit;
     	$cash_in->save();
 

@@ -23,7 +23,7 @@
                             <th>Admistration</th>
                             <th>Fine</th>
                             <th>Profit</th>
-                            <th>Investment Withdraw</th>
+                            <th>Comments</th>
                             <th>Total Credit</th>
                         </tr>
                     </thead>
@@ -33,13 +33,13 @@
                         <tr>
                             <td>{{ $each->id }}</td>
                             <td>{{ $each->member->name }}</td>
-                            <td>{{ $each->date }}</td>
+                            <td>{{ Carbon\Carbon::parse($each->date)->format('d-M-Y') }}</td>
                             <td>{{ $each->premium }}</td>
                             <td>{{ $each->admistration }}</td>
                             <td>{{ $each->fine }}</td>
                             <td>{{ $each->profit }}</td>
-                            <td>{{ $each->investment_withdraw }}</td>
                             <td>{{ $each->total_credit }}</td>
+                            <td>{{ $each->comments }}</td>
                         </tr>
                         @endforeach
                     </tbody>
