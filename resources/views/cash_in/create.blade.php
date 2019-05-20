@@ -17,7 +17,7 @@
 @endif
 
 <div class="box">
-    <div class="box-header" style="text-align: center;">
+    <div class="box-header" style="text-align: center;" style="font-family: roboto slab;">
         <h1 class="box-title">Add Cash In</h1>
     </div>
 

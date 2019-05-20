@@ -2,9 +2,9 @@
   <!-- Logo -->
   <a href="{{ url('/dashboard') }}" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class="logo-mini" style="font-size: 80% !important;">Somity</span>
+    <span class="logo-mini" style="font-size: 80% !important;">Meghna Development Society</span>
     <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg"><b>SOMITY</b></span>
+    <span class="logo-lg"><b>Meghna Development Society</b></span>
   </a>
   <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top">

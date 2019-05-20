@@ -50,7 +50,7 @@
                         <tr>
                         	<td>{{ $member->id }}</td>
                         	<td>
-                        		<img class="img-circle" src="{{ asset('storage/'.$member->photo) }}" style="height: 100%; width: 50px;" alt="member_image">
+                        		<img class="img-circle" src="{{ asset('storage/'.$member->photo) }}" style="width: 50px;" alt="member_image">
                         	</td>
                         	<td>{{ $member->name }}</td>
                         	<td>{{ $member->user->email }}</td>
