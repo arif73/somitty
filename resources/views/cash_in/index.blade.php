@@ -23,8 +23,8 @@
                             <th>Admistration</th>
                             <th>Fine</th>
                             <th>Profit</th>
-                            <th>Comments</th>
                             <th>Total Credit</th>
+                            <th>Comments</th>
                         </tr>
                     </thead>
                             

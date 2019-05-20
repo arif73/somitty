@@ -13,7 +13,7 @@
       <div class="box">
         <!-- /.box-header -->
         <div class="box-body">
-            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap table-responsive">
                 <table id="example1" class="table table-bordered table-hover dataTable text-center" role="grid" aria-describedby="example1_info">
                     <thead>
                         <tr>
@@ -25,12 +25,13 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Premium</th>
-                            <th>Admistration</th>
+                            <th>Admin</th>
                             <th>Fine</th>
                             <th>Profit</th>
                             <th>Total Credit</th>
-                            <th>Admistration</th>
+                            <th>Admin</th>
                             <th>Entertainment</th>
+                            <th>Invest. Withdraw</th>
                             <th>Others</th>
                             <th>Total Debit</th>
                             <th>Comments</th>
@@ -38,7 +39,7 @@
                     </thead>   
                     <tbody>
                         @php
-                            $in_admistration = $premium = $fine = $profit = $total_credit = $out_admistration = $entertainment = $others = $total_debit = 0;
+                            $in_admistration = $premium = $fine = $profit = $total_credit = $out_admistration = $entertainment = $investment_withdraw = $others = $total_debit = 0;
                         @endphp
                         @foreach($reports as $report)
                         <tr>
@@ -51,6 +52,7 @@
                             <td>{{ $report->total_credit }}</td>
                             <td>{{ $report->out_admistration }}</td>
                             <td>{{ $report->entertainment }}</td>
+                            <td>{{ $report->investment_withdraw }}</td>
                             <td>{{ $report->others }}</td>
                             <td>{{ $report->total_debit }}</td>
                             <td>{{ $report->comments }}</td>
@@ -63,24 +65,26 @@
                             $total_credit += $report->total_credit;
                             $out_admistration += $report->out_admistration;
                             $entertainment += $report->entertainment;
+                            $investment_withdraw += $report->investment_withdraw;
                             $others += $report->others;
                             $total_debit += $report->total_debit;
                         @endphp
 
                         @endforeach 
                         
-                        <tr style="font-weight: bold; background: #222d32; color: #fff;">
+                        <tr style="font-weight: bold;">
                             <td></td>
                             <td>Total</td>
                             <td>{{ $premium }}</td>
                             <td>{{ $in_admistration }}</td>
                             <td>{{ $fine }}</td>
                             <td>{{ $profit }}</td>
-                            <td>{{ $total_credit }}</td>
+                            <td style="background: #222d32; color: #fff;">{{ $total_credit }}</td>
                             <td>{{ $out_admistration }}</td>
                             <td>{{ $entertainment }}</td>
+                            <td>{{ $investment_withdraw }}</td>
                             <td>{{ $others }}</td>
-                            <td>{{ $total_debit }}</td>
+                            <td style="background: #222d32; color: #fff;">{{ $total_debit }}</td>
                         </tr>
                     </tbody>
                             

@@ -98,6 +98,24 @@
       </ul>
   </li>
 
+  {{-- Investments --}}
+  <li class="treeview">
+      <a href="{{ url('/investments') }}">
+          <i class="fa fa-usd"></i> <span>Investment</span>
+          <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+          </span>
+      </a>
+      <ul class="treeview-menu">
+          <li>
+              <a href="{{ url('/investments') }}"><i class="fa fa-circle-o"></i>All Investment</a>
+          </li>
+          <li>
+              <a href="{{ url('/investments/create') }}"><i class="fa fa-circle-o"></i>Add Investment</a>
+          </li>
+      </ul>
+  </li>
+
   {{-- Reports --}}
   <li class="treeview">
     <li>

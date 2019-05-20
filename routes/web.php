@@ -41,3 +41,8 @@ Route::post('cash-out/store', 'CashOutController@store');
 /*===============   Reports   ===================*/
 Route::get('/reports/create', 'ReportController@create');
 Route::post('reports', 'ReportController@index');
+
+/*===============   Investments   ===================*/
+Route::get('/investments', 'InvestmentController@index');
+Route::get('/investments/create', 'InvestmentController@create');
+Route::post('/investments/store', 'InvestmentController@store');

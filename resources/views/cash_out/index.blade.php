@@ -21,6 +21,7 @@
                             <th>Date</th>
                             <th>Admistration</th>
                             <th>Entertainment</th>
+                            <th>Investment Withdraw</th>
                             <th>Others</th>
                             <th>Total Debit</th>
                         </tr>
@@ -32,6 +33,7 @@
                              <td>{{ $each->date }}</td>
                              <td>{{ $each->admistration }}</td>
                              <td>{{ $each->entertainment }}</td>
+                             <td>{{ $each->investment_withdraw }}</td>
                              <td>{{ $each->others }}</td>
                              <td>{{ $each->total_debit }}</td>
                          </tr>
