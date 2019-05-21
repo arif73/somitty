@@ -42,7 +42,7 @@ class InvestmentController extends Controller
 
     	$investment->save();
 
-    	if ($close == 0)  { Investment::where('id', $id)->update(['status' => 0]); }
+    	if (!empty($close))  { Investment::where('id', $id)->update(['status' => 0]); }
     	return redirect()->back()->with('msg', 'Investment Added!');
     }
 }

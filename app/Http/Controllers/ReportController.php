@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\CashIn;
+use App\Investment;
+use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
@@ -24,6 +25,8 @@ class ReportController extends Controller
     					 ->orderBy('member_id')
     					 ->get();
 
-    	return view('reports.index', compact('reports', 'month', 'year'));
+        $investments = Investment::orderBy('created_at')->get();
+
+    	return view('reports.index', compact('reports', 'month', 'year', 'investments'));
     }
 }

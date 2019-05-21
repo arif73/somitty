@@ -57,7 +57,7 @@ integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="ano
 									</select>
 								</div>
 								<div class="col-md-3">
-									<input type="checkbox" value="0" name="close_investment">&nbsp; Is this Investment Close today?
+									<input type="checkbox" value="0" name="close_investment[]">&nbsp; Is this Investment Close today?
 								</div>
 							</div>
 
