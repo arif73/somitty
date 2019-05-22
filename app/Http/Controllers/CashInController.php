@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BankBalance;
 use App\CashIn;
 use App\Member;
 use Illuminate\Http\Request;
@@ -46,6 +47,9 @@ class CashInController extends Controller
     	$cash_in->comments = $request->comments;
     	$cash_in->total_credit = $total_credit;
     	$cash_in->save();
+
+        //increment bank balance when some cash is in
+        BankBalance::find(1)->increment('total_amount', $total_credit);
 
     	return redirect()->back()->with('msg', 'Cash In Added!');
     }

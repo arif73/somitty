@@ -25,7 +25,10 @@ class ReportController extends Controller
     					 ->orderBy('member_id')
     					 ->get();
 
-        $investments = Investment::orderBy('created_at')->get();
+        $investments = Investment::orderBy('created_at')
+                                 ->whereMonth('created_at', $month)
+                                 ->whereYear('created_at', $year)
+                                 ->get();
 
     	return view('reports.index', compact('reports', 'month', 'year', 'investments'));
     }

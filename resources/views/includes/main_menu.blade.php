@@ -125,6 +125,14 @@
     </li>
   </li> 
 
+  {{-- Bank Balance --}}
+  <li class="treeview">
+    <li>
+      <a href="{{ url('/bank-balance') }}">
+        <i class="fa fa-line-chart"></i> <span>Bank Balance</span>
+      </a>
+    </li>
+  </li> 
 
 </section>
   <!-- /.sidebar -->

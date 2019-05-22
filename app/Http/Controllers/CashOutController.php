@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BankBalance;
 use App\CashOut;
 use App\Member;
 use Illuminate\Http\Request;
@@ -45,6 +46,9 @@ class CashOutController extends Controller
     	$cash_out->others = $request->others;
     	$cash_out->total_debit = $total_debit;
     	$cash_out->save();
+
+        //decrement bank balance when some cash is out
+        BankBalance::find(1)->decrement('total_amount', $total_debit);
 
     	return redirect()->back()->with('msg', 'Cash Out Added!');
     }

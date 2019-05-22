@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BankBalance;
 use App\Investment;
 use Illuminate\Http\Request;
 
@@ -37,8 +38,18 @@ class InvestmentController extends Controller
     	$investment->amount = $request->amount;
 
 
-    	if ($request->purpose == 'cash_in')  { $investment->details = $id; }
-    	else { $investment->details = $request->investment_field; }
+    	if ($request->purpose == 'cash_in')  
+        { 
+            $investment->details = $id; 
+            //increment bank balance when cash in
+            BankBalance::find(1)->increment('total_amount', $request->amount);
+        }
+    	else 
+        { 
+            $investment->details = $request->investment_field; 
+            //decrement bank balance when cash out
+            BankBalance::find(1)->decrement('total_amount', $request->amount);
+        }
 
     	$investment->save();
 

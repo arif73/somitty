@@ -1,11 +1,15 @@
 @extends('layouts.master')
 @section('page_main_content')
 
+@php
+    $in_admistration = $premium = $fine = $profit = $total_credit = $out_admistration = $entertainment = $investment_withdraw = $others = $total_debit = $total_cash_in = $total_cash_out = 0;
+@endphp
 
 <div class="box">
     <div class="box-header">
         <h1 class="box-title">Monthly Summary</h1><br>
         <strong style="color: #999;">{{ DateTime::createFromFormat('!m', $month)->format('F') }} {{$year}}</strong>
+        <button onclick="reportToCsv('repots.csv')" class="btn btn-primary" style="float: right;">Save as CSV</button>
     </div>
 
 <section class="content">
@@ -15,20 +19,20 @@
         <!-- /.box-header -->
         <div class="box-body">
 
-            
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4" style="text-align: center;"><legend>Members Reposts</legend></div>
                 <div class="col-md-4"></div>
             </div>
+            @if(count($reports) > 0)
 
             <div class="dataTables_wrapper form-inline dt-bootstrap table-responsive">
                 <table class="table table-bordered table-hover text-center" role="grid">
                     <thead>
                         <tr>
                             <th colspan="2"></th>
-                            <th colspan="5">Cash In</th>
-                            <th colspan="5">Cash Out</th>
+                            <th colspan="5">Member Cash In</th>
+                            <th colspan="5">Member Cash Out</th>
                         </tr>
                         <tr>
                             <th>#</th>
@@ -47,9 +51,7 @@
                         </tr>
                     </thead>   
                     <tbody>
-                        @php
-                            $in_admistration = $premium = $fine = $profit = $total_credit = $out_admistration = $entertainment = $investment_withdraw = $others = $total_debit = 0;
-                        @endphp
+                        
                         @foreach($reports as $report)
                         <tr>
                             <td>{{ $report->member_id }}</td>
@@ -100,6 +102,10 @@
                             
                 </table>
             </div>
+            @else
+                <h1 style="color: red;">No Data Found!</h1>
+            @endif
+
 
             <br> <hr> <br>
 
@@ -109,13 +115,14 @@
                 <div class="col-md-4"></div>
             </div>
 
+            @if(count($investments) > 0)
             <div class="dataTables_wrapper form-inline dt-bootstrap table-responsive">
                 <table class="table table-bordered table-hover text-center">
                     <thead>
                         <tr>
                             <th></th>
-                            <th colspan="3">Cash In</th>
-                            <th colspan="4">Cash Out</th>
+                            <th colspan="3">Investment Cash In</th>
+                            <th colspan="4">Investment Cash Out</th>
                         </tr>
                         <tr>
                             <th>#</th>
@@ -129,7 +136,6 @@
                         </tr>
                     </thead>   
                     <tbody>
-                        @php $total_cash_in = $total_cash_out = 0; @endphp
                         @foreach($investments as $investment)
                         <tr>
                             <td>{{ $investment->id }}</td>
@@ -188,6 +194,9 @@
                     </tbody>
                 </table>
             </div>
+            @else
+                <h1 style="color: red;">No Data Found!</h1>
+            @endif
         </div>
         <!-- /.box-body -->
       </div>
@@ -198,5 +207,58 @@
 </section>
 
 </div>
+
+<script type="text/javascript">
+
+    function downloadCSV(csv, filename) {
+        var csvFile;
+        var downloadLink;
+
+        // CSV file
+        csvFile = new Blob([csv], {type: "text/csv"});
+
+        // Download link
+        downloadLink = document.createElement("a");
+
+        // File name
+        downloadLink.download = filename;
+
+        // Create a link to the file
+        downloadLink.href = window.URL.createObjectURL(csvFile);
+
+        // Hide download link
+        downloadLink.style.display = "none";
+
+        // Add the link to DOM
+        document.body.appendChild(downloadLink);
+
+        // Click download link
+        downloadLink.click();
+    }
+
+    function reportToCsv(filename) 
+    {
+        var csv = [];
+        var rows = document.querySelectorAll("table tr");
+
+        for (var i = 0; i < rows.length; i++) 
+        {
+            var row = [], cols = rows[i].querySelectorAll("td, th");
+
+            for (var j = 0; j < cols.length; j++)
+                if (j == 6 || j == 7) {
+
+                }
+                else {
+                    row.push(cols[j].innerText);
+                }
+
+            csv.push(row.join(","));
+        }
+
+        // Download CSV file
+        downloadCSV(csv.join("\n"), filename);
+    }
+</script>
 
 @endsection

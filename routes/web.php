@@ -46,3 +46,8 @@ Route::post('reports', 'ReportController@index');
 Route::get('/investments', 'InvestmentController@index');
 Route::get('/investments/create', 'InvestmentController@create');
 Route::post('/investments/store', 'InvestmentController@store');
+
+/*===============   Bank Balance   ===================*/
+Route::get('/bank-balance', 'BankBalanceController@index');
+Route::get('/bank-balance/edit', 'BankBalanceController@edit');
+Route::post('/bank-balance/update', 'BankBalanceController@update');
