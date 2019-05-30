@@ -9,7 +9,13 @@
     <div class="box-header">
         <h1 class="box-title">Monthly Summary</h1><br>
         <strong style="color: #999;">{{ DateTime::createFromFormat('!m', $month)->format('F') }} {{$year}}</strong>
-        <button onclick="reportToCsv('repots.csv')" class="btn btn-primary" style="float: right;">Save as CSV</button>
+        <button onclick="reportToCsv('repots.csv')" class="btn btn-primary" style="float: right;">Save as CSV</button> 
+        <form action="{{ url('/reports-pdf') }}" method="post" style="float: right; margin-right: 3px;">
+            @csrf
+            <input type="hidden" name="month" value="{{ $month }}">
+            <input type="hidden" name="year" value="{{ $year }}">
+            <button type="submit" class="btn btn-info">Save as PDF</button>
+        </form>
     </div>
 
 <section class="content">

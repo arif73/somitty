@@ -62,7 +62,7 @@
 							{{-- gender --}}
 							<div class="form-group row">
 								<div class="col-md-2"></div>
-								<div class="col-md-2"> <label for="gender" style="float: right;">Select :</label> </div>
+								<div class="col-md-2"> <label for="gender" style="float: right;">Gender :</label> </div>
 								<div class="col-md-5">
 									<select name="gender" class="form-control">
 										<option value="	">Select</option>
