@@ -137,9 +137,19 @@
 							{{-- spouse --}}
 							<div class="form-group row">
 								<div class="col-md-2"></div>
-								<div class="col-md-2"> <label for="spouse" style="float: right;">Spouse Name :</label> </div>
+								<div class="col-md-2"> <label for="spouse" style="float: right;">Nominee Name :</label> </div>
 								<div class="col-md-5">
-									<input type="text" name="spouse" value="{{ $member->spouse }}" class="form-control" placeholder="Enter Spouse Name" required="">
+									<input type="text" name="spouse" value="{{ $member->spouse }}" class="form-control" placeholder="Enter Name" required="">
+								</div>
+								<div class="col-md-3"></div>
+							</div>
+
+							{{-- spouse nid --}}
+							<div class="form-group row">
+								<div class="col-md-2"></div>
+								<div class="col-md-2"> <label for="spouse" style="float: right;">Nominee NID :</label> </div>
+								<div class="col-md-5">
+									<input type="number" name="spouse_nid" value="{{ $member->spouse_nid }}" class="form-control" placeholder="Enter NID" required="">
 								</div>
 								<div class="col-md-3"></div>
 							</div>

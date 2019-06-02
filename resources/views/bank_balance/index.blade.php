@@ -2,11 +2,6 @@
 @section('page_main_content')
 
 <div class="box">
-    <div class="box-header">
-        <h1 class="box-title">Bank Balance</h1>
-        <a href="{{ url('/bank-balance/edit') }}" style="float: right;" class="btn btn-danger">Edit Bank Balance</a>
-    </div>
-
 	<section class="content">
 		<div class="row">
 		   <div class="col-md-12">

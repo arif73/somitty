@@ -7,13 +7,6 @@
       <div class="box">
         <!-- /.box-header -->
         <div class="box-header">
-        	<div class="row">
-        		<div class="col-md-5"></div>
-        		<div class="col-md-2">
-        			<img src="{{ asset('/logo.jpeg') }}" alt="company logo" style="width: 80%;">
-        		</div>
-        		<div class="col-md-5"></div>
-        	</div>
         	<hr style="border: 1px solid #d2d6de;">
         	<div class="row">
         		<div class="col-md-10">
@@ -28,15 +21,24 @@
 
         <div class="box-body">
            <div class="col-md-4 col-sm-8 col-xs-12">
-           
-               <a href="{{ url('user') }}" class="info-box info_box_index" style="color: #000; text-decoration: none; background: #ffefef; border: 1px solid #ddd8d8;">
-                   <span class="info-box-icon bg-red"><i class="fa fa-user"></i></span>
+               <a href="{{ url('cash-in') }}" class="info-box info_box_index" style="color: #000; text-decoration: none; background: #ffefef; border: 1px solid #ddd8d8;">
+                   <span class="info-box-icon bg-red"><i class="fa fa-money"></i></span>
                    <div class="info-box-content">
-                       <span class="info-box-text">Number of Admins</span>
-                       <span class="info-box-number" style="margin-top: 10px;">{{ $admins }}</span>
+                       <span class="info-box-text">Life Time Cash In</span>
+                       <span class="info-box-number" style="margin-top: 10px;">{{ $all_cash_in }}</span>
                    </div><!-- /.info-box-content -->
                </a><!-- /.info-box -->
             </div>
+
+            <div class="col-md-4 col-sm-8 col-xs-12">
+                <a href="{{ url('cash-out') }}" class="info-box info_box_index" style="color: #000; text-decoration: none; background: #ffefef; border: 1px solid #ddd8d8;">
+                    <span class="info-box-icon bg-red"><i class="fa fa-money"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Life Time Cash Out</span>
+                        <span class="info-box-number" style="margin-top: 10px;">{{ $all_cash_out }}</span>
+                    </div><!-- /.info-box-content -->
+                </a><!-- /.info-box -->
+             </div>
 
 			
 			<div class="col-md-4 col-sm-8 col-xs-12">
@@ -49,11 +51,10 @@
 			       </div><!-- /.info-box-content -->
 			   </a><!-- /.info-box -->
 
-			   </div>
+			</div>
 
-			   <div class="col-md-4 col-sm-8 col-xs-12">
-			   
-			   <a href="{{ url('cash-in') }}" class="info-box info_box_index" style="color: #000; text-decoration: none; background: #ffefef; border: 1px solid #ddd8d8;">
+		   	<div class="col-md-4 col-sm-8 col-xs-12">
+		   		<a href="{{ url('cash-in') }}" class="info-box info_box_index" style="color: #000; text-decoration: none; background: #ffefef; border: 1px solid #ddd8d8;">
 			       <span class="info-box-icon bg-olive"><i class="fa fa-dollar"></i></span>
 			       <div class="info-box-content">
 			           <span class="info-box-text">Cash In(Current Month)</span>
@@ -61,7 +62,7 @@
 			       </div><!-- /.info-box-content -->
 			   </a><!-- /.info-box -->
 
-			   </div>
+		   	</div>
 
 			   <div class="col-md-4 col-sm-8 col-xs-12">
 			       
@@ -86,6 +87,46 @@
 				            <span class="info-box-text">Investments(Current Month)</span><br>
 				            <span class="info-box-text">Cash In : {{ $investments_in }}</span>
 				            <span class="info-box-text" style="margin-top: 5px;">Cash Out : {{ $investments_out }}</span>
+				        </div><!-- /.info-box-content -->
+				    </a><!-- /.info-box -->
+
+				</div>
+
+				<div class="col-md-4 col-sm-8 col-xs-12">
+
+				    <a href="{{ url('investments') }}" class="info-box info_box_index" style="color: #000; text-decoration: none; background: #ffefef; border: 1px solid #ddd8d8;">
+				
+				        <span class="info-box-icon bg-green"><i class="fa  fa-dollar"></i></span>
+				        <div class="info-box-content">
+				            <span class="info-box-text">Life Time Investments</span><br>
+				            <span class="info-box-text">Cash In : {{ $all_investments_in }}</span>
+				            <span class="info-box-text" style="margin-top: 5px;">Cash Out : {{ $all_investments_out }}</span>
+				        </div><!-- /.info-box-content -->
+				    </a><!-- /.info-box -->
+
+				</div>
+
+				<div class="col-md-4 col-sm-8 col-xs-12">
+
+				    <a href="{{ url('investments') }}" class="info-box info_box_index" style="color: #000; text-decoration: none; background: #ffefef; border: 1px solid #ddd8d8;">
+				
+				        <span class="info-box-icon bg-green"><i class="fa  fa-dollar"></i></span>
+				        <div class="info-box-content">
+				            <span class="info-box-text">Total Closed Investments</span><br>
+				            <span class="info-box-number">{{ $investments_closed }}</span>
+				        </div><!-- /.info-box-content -->
+				    </a><!-- /.info-box -->
+
+				</div>
+
+				<div class="col-md-4 col-sm-8 col-xs-12">
+
+				    <a href="{{ url('investments') }}" class="info-box info_box_index" style="color: #000; text-decoration: none; background: #ffefef; border: 1px solid #ddd8d8;">
+				
+				        <span class="info-box-icon bg-green"><i class="fa  fa-dollar"></i></span>
+				        <div class="info-box-content">
+				            <span class="info-box-text">Total Running Investments</span><br>
+				            <span class="info-box-number">{{ $investments_running }}</span>
 				        </div><!-- /.info-box-content -->
 				    </a><!-- /.info-box -->
 

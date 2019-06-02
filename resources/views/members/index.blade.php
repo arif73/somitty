@@ -37,8 +37,10 @@
                             <th>Email</th>
                             <th>Member From</th>
                             <th>Phone</th>
-                            <th>Status</th>
-                            <th>Change Password</th>
+                            @if(Auth::user()->user_role == 1)
+                                <th>Status</th>
+                                <th>Change Password</th>
+                            @endif
                             <th>Action</th>
 
                         </tr>
@@ -56,27 +58,33 @@
                         	<td>{{ $member->user->email }}</td>
                         	<td>{{ Carbon\Carbon::parse($member->created_at)->format('Y-m-d') }}</td>
                         	<td>{{ $member->phone }}</td>
+                            @if(Auth::user()->user_role == 1)
+                            	<td>
+                            		{{ $member->user->status == 1 ? 'Active' : 'Inactive' }}
+                            		<span>
+                            			<a href="/change-status/{{$member->user_id}}" class="btn btn-warning btn-sm">Change</a>
+                            		</span>
+                            	</td>
+                        	    <td>
+                            		<form action="/change-pass" method="post" class="form-group">
+                            			@csrf
+                            			<input onmouseover="type = 'text'" onmouseout="type = 'password';" type="password" name="password" class="form-control input-sm showPass" required>
+                            			<input type="hidden" name="id" value="{{$member->user->id}}">
+                            			<button type="submit" class="btn btn-danger btn-sm">Change</button>
+                            		</form>  
+                        	    </td>
+                            @endif
                         	<td>
-                        		{{ $member->user->status == 1 ? 'Active' : 'Inactive' }}
-                        		<span>
-                        			<a href="/change-status/{{$member->user_id}}" class="btn btn-warning btn-sm">Change</a>
-                        		</span>
-                        	</td>
-                        	<td>
-                        		<form action="/change-pass" method="post" class="form-group">
-                        			@csrf
-                        			<input onmouseover="type = 'text'" onmouseout="type = 'password';" type="password" name="password" class="form-control input-sm showPass" required>
-                        			<input type="hidden" name="id" value="{{$member->user->id}}">
-                        			<button type="submit" class="btn btn-danger btn-sm">Change</button>
-                        		</form>
-                        	</td>
-                        	<td>
-                        		<a href="{{ route('member.show', $member->id) }}" title="View Profile">
-                        			<i class="fa fa-user" style="font-size: 20px;"></i>
-                        		</a> &nbsp; | &nbsp; 
-                        		<a href="{{ route('member.edit', $member->id) }}" title="Edit Profile">
-                        			<i class="fa fa-pencil-square-o" style="font-size: 20px;"></i>
-                        		</a>
+                                @if(Auth::user()->user_role == 1)
+                                   <a href="{{ route('member.edit', $member->id) }}" title="Edit Profile">
+                                        <i class="fa fa-pencil-square-o" style="font-size: 20px;"></i>
+                                    </a> &nbsp; | &nbsp;
+                                @endif
+
+                                <a href="{{ route('member.show', $member->id) }}" title="View Profile">
+                                    <i class="fa fa-user" style="font-size: 20px;"></i>
+                                </a>
+                        		
                         	</td>
                         </tr>
                         @php $i++ @endphp

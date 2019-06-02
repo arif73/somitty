@@ -47,6 +47,7 @@
                             <th>Admin</th>
                             <th>Fine</th>
                             <th>Profit</th>
+                            <th>Date</th>
                             <th>Total Credit</th>
                             <th>Admin</th>
                             <th>Entertainment</th>
@@ -54,6 +55,7 @@
                             <th>Others</th>
                             <th>Total Debit</th>
                             <th>Comments</th>
+                            <th>Balance</th>
                         </tr>
                     </thead>   
                     <tbody>
@@ -62,6 +64,7 @@
                         <tr>
                             <td>{{ $report->member_id }}</td>
                             <td>{{ $report->member->name }}</td>
+                            <td>{{ Carbon\Carbon::parse($report->created_at)->toDateString() }}</td>
                             <td>{{ $report->premium }}</td>
                             <td>{{ $report->in_admistration }}</td>
                             <td>{{ $report->fine }}</td>
@@ -73,6 +76,7 @@
                             <td>{{ $report->others }}</td>
                             <td>{{ $report->total_debit }}</td>
                             <td>{{ $report->comments }}</td>
+                            <td>-</td>
                         </tr>
                         @php
                             $in_admistration += $report->in_admistration;
@@ -91,6 +95,7 @@
                         
                         <tr style="font-weight: bold;">
                             <td></td>
+                            <td></td>
                             <td>Total</td>
                             <td>{{ $premium }}</td>
                             <td>{{ $in_admistration }}</td>
@@ -102,6 +107,7 @@
                             <td>{{ $investment_withdraw }}</td>
                             <td>{{ $others }}</td>
                             <td style="color: red;">{{ $total_debit }}</td>
+                            <td></td>
                             <td style="background: #222d32; color: #fff;">{{ $total_credit - $total_debit }}</td>
                         </tr>
                     </tbody>
@@ -137,8 +143,9 @@
                             <th>Amount</th>
                             <th>Investment Name</th>
                             <th>Date</th>
-                            <th>Amount</th>
+                            <th>Amounts</th>
                             <th>Status</th>
+                            <th>Balance</th>
                         </tr>
                     </thead>   
                     <tbody>
@@ -154,6 +161,7 @@
                                 <td>-</td>
                                 <td>0</td>
                                 <td>-</td>
+                                <td>-</td>
 
                                 @php $total_cash_in += $investment->amount; @endphp
                             @else
@@ -164,6 +172,7 @@
                                 <td>{{ Carbon\Carbon::parse($investment->created_at)->toDateString() }}</td>
                                 <td>{{ $investment->amount }}</td>
                                 <td>{{ $investment->status == 1 ? 'Running' : 'Closed' }}</td>
+                                <td>-</td>
                                 
                                 @php $total_cash_out += $investment->amount; @endphp
                             @endif
@@ -179,6 +188,7 @@
                             <td></td>
                             <td></td>
                             <td style="color: red;">{{ $total_cash_out }}</td>
+                            <td></td>
                             <td style="background: #222d32; color: #fff;">
                                 {{ $total_cash_in - $total_cash_out }}
                             </td>

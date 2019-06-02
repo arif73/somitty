@@ -27,6 +27,7 @@
       </li>
   
   {{-- Admin --}}
+  @if(Auth::user()->user_role == 1)
   <li class="treeview">
       <a href="{{ route('user.index') }}">
           <i class="fa fa-user"></i> <span>Admin</span>
@@ -43,6 +44,7 @@
           </li>
       </ul>
   </li>
+  @endif
 
   {{-- Member --}}
   <li class="treeview">
@@ -56,9 +58,11 @@
           <li>
               <a href="{{ route('member.index') }}"><i class="fa fa-circle-o"></i>Member List</a>
           </li>
-          <li>
-              <a href="{{ route('member.create') }}"><i class="fa fa-circle-o"></i>Add Member</a>
-          </li>
+          @if(Auth::user()->user_role == 1)
+            <li>
+                <a href="{{ route('member.create') }}"><i class="fa fa-circle-o"></i>Add Member</a>
+            </li>
+          @endif
       </ul>
   </li>
 
@@ -74,9 +78,11 @@
           <li>
               <a href="{{ url('/cash-in') }}"><i class="fa fa-circle-o"></i>All Cash In</a>
           </li>
-          <li>
-              <a href="{{ url('/cash-in/create') }}"><i class="fa fa-circle-o"></i>Add Cash In</a>
-          </li>
+          @if(Auth::user()->user_role == 1)
+            <li>
+                <a href="{{ url('/cash-in/create') }}"><i class="fa fa-circle-o"></i>Add Cash In</a>
+            </li>
+          @endif
       </ul>
   </li>  
 
@@ -92,9 +98,11 @@
           <li>
               <a href="{{ url('/cash-out') }}"><i class="fa fa-circle-o"></i>All Cash Out</a>
           </li>
-          <li>
-              <a href="{{ url('/cash-out/create') }}"><i class="fa fa-circle-o"></i>Add Cash Out</a>
-          </li>
+          @if(Auth::user()->user_role == 1)
+            <li>
+                <a href="{{ url('/cash-out/create') }}"><i class="fa fa-circle-o"></i>Add Cash Out</a>
+            </li>
+          @endif
       </ul>
   </li>
 
@@ -110,9 +118,11 @@
           <li>
               <a href="{{ url('/investments') }}"><i class="fa fa-circle-o"></i>All Investment</a>
           </li>
-          <li>
-              <a href="{{ url('/investments/create') }}"><i class="fa fa-circle-o"></i>Add Investment</a>
-          </li>
+          @if(Auth::user()->user_role == 1)
+            <li>
+                <a href="{{ url('/investments/create') }}"><i class="fa fa-circle-o"></i>Add Investment</a>
+            </li>
+          @endif
       </ul>
   </li>
 

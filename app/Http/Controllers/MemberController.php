@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\CashIn;
+use App\CashOut;
 use App\Member;
 use App\User;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class MemberController extends Controller
 {
     public function index()
-    {
+    {   
     	$members = Member::all();
     	return view('members.index', compact('members'));
     }
@@ -54,6 +57,7 @@ class MemberController extends Controller
     	$member->present_addr = $request->present_addr;
     	$member->permanent_addr = $request->permanent_addr;
     	$member->spouse = $request->spouse;
+        $member->spouse_nid = $request->spouse_nid;
 
     	if($request->hasFile('photo'))
     	{
@@ -63,6 +67,14 @@ class MemberController extends Controller
     	    $image->storeAs('public',$filename);
     	    $member->photo = $filename;
     	}
+        if($request->hasFile('spouse_photo'))
+        {
+            $image = $request->spouse_photo;
+            $ext = $image->extension();
+            $filename = uniqid().'.'.$ext;
+            $image->storeAs('public/nominee',$filename);
+            $member->spouse_photo = $filename;
+        }
 
     	$member->save();
 
@@ -70,9 +82,11 @@ class MemberController extends Controller
     }
 
     public function show($id)
-    {
+    {  
         $member = Member::find($id);
-        return view('members.show', compact('member'));
+        $member_cash_in = CashIn::where('member_id', $id)->sum('total_credit');
+        $member_cash_out = CashOut::where('member_id', $id)->sum('total_debit');
+        return view('members.show', compact('member', 'member_cash_in', 'member_cash_out'));
     }
 
     public function edit($id)
@@ -108,6 +122,7 @@ class MemberController extends Controller
         $member->present_addr = $request->present_addr;
         $member->permanent_addr = $request->permanent_addr;
         $member->spouse = $request->spouse;
+        $member->spouse_nid = $request->spouse_nid;
         $member->save();
 
         return redirect()->route('member.index')->with('msg', 'Update Successful!');

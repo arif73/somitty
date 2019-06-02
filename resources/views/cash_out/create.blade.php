@@ -73,7 +73,7 @@
 
 							<div class="form-group row">
 								<div class="col-md-2"></div>
-								<div class="col-md-2"> <label for="investment_withdraw">Investment Withdraw :</label> </div>
+								<div class="col-md-2"> <label for="investment_withdraw">Investment Profit :</label> </div>
 								<div class="col-md-5">
 									<input type="number" name="investment_withdraw" value="{{ old('investment_withdraw') }}" class="form-control" required>
 								</div>

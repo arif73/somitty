@@ -146,9 +146,29 @@
 							{{-- spouse --}}
 							<div class="form-group row">
 								<div class="col-md-2"></div>
-								<div class="col-md-2"> <label for="spouse" style="float: right;">Spouse Name :</label> </div>
+								<div class="col-md-2"> <label for="spouse" style="float: right;">Nominee Name :</label> </div>
 								<div class="col-md-5">
-									<input type="text" name="spouse" value="{{ old('spouse') }}" class="form-control" placeholder="Enter Spouse Name" required="">
+									<input type="text" name="spouse" value="{{ old('spouse') }}" class="form-control" placeholder="Enter Name" required="">
+								</div>
+								<div class="col-md-3"></div>
+							</div>
+
+							{{-- spouse nid --}}
+							<div class="form-group row">
+								<div class="col-md-2"></div>
+								<div class="col-md-2"> <label for="spouse_nid" style="float: right;">Nominee NID :</label> </div>
+								<div class="col-md-5">
+									<input type="number" name="spouse_nid" class="form-control" value="{{ old('spouse_nid') }}" placeholder="Enter NID" required="">
+								</div>
+								<div class="col-md-3"></div>
+							</div>
+
+							{{-- spouse photo --}}
+							<div class="form-group row">
+								<div class="col-md-2"></div>
+								<div class="col-md-2"> <label for="spouse_photo" style="float: right;">Nominee Photo :</label> </div>
+								<div class="col-md-5">
+									<input type="file" name="spouse_photo" class="form-control custom-file-input">
 								</div>
 								<div class="col-md-3"></div>
 							</div>

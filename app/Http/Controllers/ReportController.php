@@ -19,7 +19,7 @@ class ReportController extends Controller
     	$month = $request->month;
     	$year = $request->year;
 
-    	$reports = CashIn::select('cash_ins.member_id', 'cash_ins.admistration as in_admistration', 'cash_ins.premium', 'cash_ins.fine', 'cash_ins.profit', 'cash_ins.total_credit', 'cash_ins.comments', 'cash_outs.admistration as out_admistration', 'cash_outs.entertainment', 'cash_outs.investment_withdraw', 'cash_outs.others', 'cash_outs.total_debit')
+    	$reports = CashIn::select('cash_ins.member_id', 'cash_ins.admistration as in_admistration', 'cash_ins.premium', 'cash_ins.fine', 'cash_ins.profit', 'cash_ins.total_credit', 'cash_ins.comments', 'cash_ins.created_at', 'cash_outs.admistration as out_admistration', 'cash_outs.entertainment', 'cash_outs.investment_withdraw', 'cash_outs.others', 'cash_outs.total_debit')
     					 ->whereMonth('cash_ins.date', $month)
     					 ->whereYear('cash_ins.date', $request->year)
     					 ->leftJoin('cash_outs', 'cash_ins.member_id', 'cash_outs.member_id')
@@ -40,7 +40,7 @@ class ReportController extends Controller
         $month = $request->month;
         $year = $request->year;
 
-        $reports = CashIn::select('cash_ins.member_id', 'cash_ins.admistration as in_admistration', 'cash_ins.premium', 'cash_ins.fine', 'cash_ins.profit', 'cash_ins.total_credit', 'cash_ins.comments', 'cash_outs.admistration as out_admistration', 'cash_outs.entertainment', 'cash_outs.investment_withdraw', 'cash_outs.others', 'cash_outs.total_debit')
+        $reports = CashIn::select('cash_ins.member_id', 'cash_ins.admistration as in_admistration', 'cash_ins.premium', 'cash_ins.fine', 'cash_ins.profit', 'cash_ins.total_credit', 'cash_ins.comments', 'cash_ins.created_at', 'cash_outs.admistration as out_admistration', 'cash_outs.entertainment', 'cash_outs.investment_withdraw', 'cash_outs.others', 'cash_outs.total_debit')
                          ->whereMonth('cash_ins.date', $month)
                          ->whereYear('cash_ins.date', $request->year)
                          ->leftJoin('cash_outs', 'cash_ins.member_id', 'cash_outs.member_id')
