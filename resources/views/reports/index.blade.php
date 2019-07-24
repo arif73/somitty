@@ -36,9 +36,9 @@
                 <table class="table table-bordered table-hover text-center" role="grid">
                     <thead>
                         <tr>
-                            <th colspan="2"></th>
-                            <th colspan="5">Member Cash In</th>
-                            <th colspan="5">Member Cash Out</th>
+                            <!-- <th colspan="2"></th> -->
+                            <th colspan="8">Member Cash In</th>
+                            <th colspan="7">Member Cash Out</th>
                         </tr>
                         <tr>
                             <th>#</th>
@@ -52,7 +52,7 @@
                             <th>Admin</th>
                             <th>Entertainment</th>
                             <th>Invest. Withdraw</th>
-                            <th>Others</th>
+                          
                             <th>Total Debit</th>
                             <th>Comments</th>
                             <th>Balance</th>
@@ -64,16 +64,16 @@
                         <tr>
                             <td>{{ $report->member_id }}</td>
                             <td>{{ $report->member->name }}</td>
-                            <td>{{ Carbon\Carbon::parse($report->created_at)->toDateString() }}</td>
                             <td>{{ $report->premium }}</td>
                             <td>{{ $report->in_admistration }}</td>
                             <td>{{ $report->fine }}</td>
                             <td>{{ $report->profit }}</td>
+                            <td>{{ Carbon\Carbon::parse($report->date)->toDateString() }}</td>
                             <td>{{ $report->total_credit }}</td>
                             <td>{{ $report->out_admistration }}</td>
                             <td>{{ $report->entertainment }}</td>
                             <td>{{ $report->investment_withdraw }}</td>
-                            <td>{{ $report->others }}</td>
+                           
                             <td>{{ $report->total_debit }}</td>
                             <td>{{ $report->comments }}</td>
                             <td>-</td>
@@ -87,7 +87,7 @@
                             $out_admistration += $report->out_admistration;
                             $entertainment += $report->entertainment;
                             $investment_withdraw += $report->investment_withdraw;
-                            $others += $report->others;
+                           
                             $total_debit += $report->total_debit;
                         @endphp
 
@@ -95,17 +95,17 @@
                         
                         <tr style="font-weight: bold;">
                             <td></td>
-                            <td></td>
                             <td>Total</td>
                             <td>{{ $premium }}</td>
                             <td>{{ $in_admistration }}</td>
                             <td>{{ $fine }}</td>
                             <td>{{ $profit }}</td>
+                            <td></td>
                             <td style="color: #22af28;">{{ $total_credit }}</td>
                             <td>{{ $out_admistration }}</td>
                             <td>{{ $entertainment }}</td>
                             <td>{{ $investment_withdraw }}</td>
-                            <td>{{ $others }}</td>
+                           
                             <td style="color: red;">{{ $total_debit }}</td>
                             <td></td>
                             <td style="background: #222d32; color: #fff;">{{ $total_credit - $total_debit }}</td>

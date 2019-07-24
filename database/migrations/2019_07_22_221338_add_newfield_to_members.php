@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddNomineePhotoToMembersTable extends Migration
+class AddNewfieldToMembers extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,9 @@ class AddNomineePhotoToMembersTable extends Migration
     public function up()
     {
         Schema::table('members', function (Blueprint $table) {
-            $table->string('spouse_photo')->nullable()->after('spouse_nid');
+            $table->string('profession');
+            $table->string('blood_group');
+            $table->date('joining_date');
         });
     }
 
@@ -26,7 +28,9 @@ class AddNomineePhotoToMembersTable extends Migration
     public function down()
     {
         Schema::table('members', function (Blueprint $table) {
-            $table->dropColumn('spouse_photo');
+            $table->dropColumn('profession');
+            $table->dropColumn('blood_group');
+            $table->dropColumn('joining_date');
         });
     }
 }

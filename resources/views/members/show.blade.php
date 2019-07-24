@@ -63,6 +63,18 @@
 							</div><br>
 							<div class="row">
 								<div class="col-md-1"></div>
+								<div class="col-md-5"><strong>Profession :</strong></div>
+								<div class="col-md-5"><strong>{{ $member->profession }}</strong></div>
+								<div class="col-md-1"></div>
+							</div><br>
+							<div class="row">
+								<div class="col-md-1"></div>
+								<div class="col-md-5"><strong>Blood Group :</strong></div>
+								<div class="col-md-5"><strong>{{ $member->blood_group }}</strong></div>
+								<div class="col-md-1"></div>
+							</div><br>
+							<div class="row">
+								<div class="col-md-1"></div>
 								<div class="col-md-5"><strong>Status :</strong></div>
 								<div class="col-md-5">
 									<strong>{{ $member->user->status == 1 ? "ACTIVE" : "INACTIVE" }}</strong>
@@ -126,7 +138,7 @@
 								<div class="col-md-1"></div>
 								<div class="col-md-5"><strong>Joining Date :</strong></div>
 								<div class="col-md-5">
-									<strong>{{ Carbon\Carbon::parse($member->created_at)->format('Y-m-d') }}</strong>
+									<strong>{{ Carbon\Carbon::parse($member->joinging_date)->format('Y-m-d') }}</strong>
 								</div>
 								<div class="col-md-1"></div>
 							</div><br>

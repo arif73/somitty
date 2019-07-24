@@ -15,12 +15,12 @@ class CreateCashOutsTable extends Migration
     {
         Schema::create('cash_outs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->BigInteger('member_id')->unsigned()->index();  
+            $table->BigInteger('member_id')->unsigned()->index()->nullable();  
             $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
             $table->date('date');
-            $table->integer('admistration');
-            $table->integer('entertainment');
-            $table->integer('others');
+            $table->integer('admistration')->nullable();
+            $table->integer('entertainment')->nullable();
+            $table->integer('investment_withdraw')->nullable();
             $table->integer('total_debit');
             $table->timestamps();
         });

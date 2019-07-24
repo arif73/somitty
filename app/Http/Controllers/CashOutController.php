@@ -12,6 +12,7 @@ class CashOutController extends Controller
     public function index()
     {	
     	$cash_out = CashOut::all();
+        
     	return view('cash_out.index', compact('cash_out'));
     }
 
@@ -27,15 +28,12 @@ class CashOutController extends Controller
     public function store(Request $request)
     {	
     	$request->validate([
-    	    'member' => 'required',
+    	    
     	    'date' => 'required',
-    	    'admistration' => 'required',
-    	    'entertainment' => 'required',
-            'investment_withdraw' => 'required',
-    	    'others' => 'required',
+    	   
     	]);
 
-    	$total_debit = $request->admistration + $request->entertainment + $request->investment_withdraw + $request->others;
+    	$total_debit = $request->admistration + $request->entertainment + $request->investment_withdraw;
 
     	$cash_out = new CashOut;
     	$cash_out->member_id = $request->member;
@@ -43,7 +41,6 @@ class CashOutController extends Controller
     	$cash_out->admistration = $request->admistration;
     	$cash_out->entertainment = $request->entertainment;
         $cash_out->investment_withdraw = $request->investment_withdraw;
-    	$cash_out->others = $request->others;
     	$cash_out->total_debit = $total_debit;
     	$cash_out->save();
 

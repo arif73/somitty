@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddInvestmentWithdrawToCashOuts extends Migration
+class AddRememberTokenToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddInvestmentWithdrawToCashOuts extends Migration
      */
     public function up()
     {
-        Schema::table('cash_outs', function (Blueprint $table) {
-            $table->integer('investment_withdraw')->after('entertainment');
+        Schema::table('users', function (Blueprint $table) {
+            Schema::table('users', function($table) {
+            $table -> string('remember_token', 100) -> nullable();
+                   });
         });
     }
 
@@ -25,8 +27,9 @@ class AddInvestmentWithdrawToCashOuts extends Migration
      */
     public function down()
     {
-        Schema::table('cash_outs', function (Blueprint $table) {
-            $table->dropColumn('investment_withdraw');
-        });
+        Schema::table('users', function($table) {
+        $table->dropColumn('remember_token');
+    });
+        
     }
 }

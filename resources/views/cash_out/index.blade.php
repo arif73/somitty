@@ -22,7 +22,6 @@
                             <th>Admistration</th>
                             <th>Entertainment</th>
                             <th>Investment Withdraw</th>
-                            <th>Others</th>
                             <th>Total Debit</th>
                         </tr>
                     </thead>
@@ -34,7 +33,6 @@
                              <td>{{ $each->admistration }}</td>
                              <td>{{ $each->entertainment }}</td>
                              <td>{{ $each->investment_withdraw }}</td>
-                             <td>{{ $each->others }}</td>
                              <td>{{ $each->total_debit }}</td>
                          </tr>
                          @endforeach   

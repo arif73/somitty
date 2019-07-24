@@ -15,6 +15,7 @@ class MemberController extends Controller
     public function index()
     {   
     	$members = Member::all();
+
     	return view('members.index', compact('members'));
     }
 
@@ -33,6 +34,7 @@ class MemberController extends Controller
     	    'gender' => 'required',
     	    'phone' => 'required|unique:members',
     	    'email' => 'required|unique:users',
+            'joining_date' => 'required',
     	]);
 
     	$user = new User;
@@ -58,6 +60,10 @@ class MemberController extends Controller
     	$member->permanent_addr = $request->permanent_addr;
     	$member->spouse = $request->spouse;
         $member->spouse_nid = $request->spouse_nid;
+        $member->profession=$request->profession;
+        $member->blood_group= $request->blood_group;
+        $member->joining_date=$request->joining_date;
+
 
     	if($request->hasFile('photo'))
     	{
@@ -106,6 +112,16 @@ class MemberController extends Controller
             'gender' => 'required',
             'phone' => 'required',
             'email' => 'required',
+            'father' => 'required',
+            'mother' => 'required',
+            'present_addr' => 'required',
+            'permanent_addr' => 'required',
+            'spouse' => 'required',
+            'spouse_nid' => 'required',
+            'profession' => 'required',
+            'blood_group' => 'required',
+            'joining_date' => 'required',
+
         ]);
 
         $user = User::find($request->user_id);
@@ -123,6 +139,28 @@ class MemberController extends Controller
         $member->permanent_addr = $request->permanent_addr;
         $member->spouse = $request->spouse;
         $member->spouse_nid = $request->spouse_nid;
+        $member->profession=$request->profession;
+        $member->blood_group= $request->blood_group;
+        $member->joining_date=$request->joining_date;
+        
+        if($request->hasFile('photo'))
+        {
+            $image = $request->photo;
+            $ext = $image->extension();
+            $filename = uniqid().'.'.$ext;
+            $image->storeAs('public',$filename);
+            $member->photo = $filename;
+        }
+        if($request->hasFile('spouse_photo'))
+        {
+            $image = $request->spouse_photo;
+            $ext = $image->extension();
+            $filename = uniqid().'.'.$ext;
+            $image->storeAs('public/nominee',$filename);
+            $member->spouse_photo = $filename;
+        }
+
+
         $member->save();
 
         return redirect()->route('member.index')->with('msg', 'Update Successful!');

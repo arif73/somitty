@@ -1,4 +1,4 @@
-@extends('layouts.master')
+ @extends('layouts.master')
 @section('page_main_content')
 
 @if(session('msg'))
@@ -150,6 +150,65 @@
 								<div class="col-md-2"> <label for="spouse" style="float: right;">Nominee NID :</label> </div>
 								<div class="col-md-5">
 									<input type="number" name="spouse_nid" value="{{ $member->spouse_nid }}" class="form-control" placeholder="Enter NID" required="">
+								</div>
+								<div class="col-md-3"></div>
+							</div>
+
+							{{-- spouse photo --}}
+							<div class="form-group row">
+								<div class="col-md-2"></div>
+								<div class="col-md-2"> <label for="spouse_photo" style="float: right;">Nominee Photo :</label> </div>
+								<div class="col-md-5">
+									<input type="file" name="spouse_photo" class="form-control custom-file-input">
+								</div>
+								<div class="col-md-3"></div>
+							</div>
+
+							{{-- photo --}}
+							<div class="form-group row">
+								<div class="col-md-2"></div>
+								<div class="col-md-2"> <label for="photo" style="float: right;">Photo :</label> </div>
+								<div class="col-md-5">
+									<input type="file" name="photo" class="form-control custom-file-input">
+								</div>
+								<div class="col-md-3"></div>
+							</div>
+
+							{{-- profession --}}
+							<div class="form-group row">
+								<div class="col-md-2"></div>
+								<div class="col-md-2"> <label for="profession" style="float: right;">Profession :</label> </div>
+								<div class="col-md-5">
+									<input type="text" name="profession" value="{{ $member->profession }}" class="form-control" placeholder="Enter profession " required="">
+								</div>
+								<div class="col-md-3"></div>
+							</div>
+
+							{{-- Blood Group --}}
+							<div class="form-group row">
+								<div class="col-md-2"></div>
+								<div class="col-md-2"> <label for="blood_group" style="float: right;">Blood Group :</label> </div>
+								<div class="col-md-5">
+									<select name="blood_group" class="form-control">
+										<option value="A+" {{ $member->blood_group == 'A+' ? 'selected' : '' }}>A+</option>
+										<option value="A-" {{ $member->blood_group == 'A-' ? 'selected' : '' }}>A-</option>
+										<option value="B+" {{ $member->blood_group == 'B+' ? 'selected' : '' }}>B+</option>
+										<option value="B-" {{ $member->blood_group == 'B-' ? 'selected' : '' }}>B-</option>
+										<option value="AB+" {{ $member->blood_group == 'AB+' ? 'selected' : '' }}>AB+</option>
+										<option value="AB-" {{ $member->blood_group == 'AB-' ? 'selected' : '' }}>AB-</option>
+										<option value="O+" {{ $member->blood_group == 'O+' ? 'selected' : '' }}>O+</option>
+										<option value="O-" {{ $member->blood_group == 'O-' ? 'selected' : '' }}>O-</option>
+									</select>
+								</div>
+								<div class="col-md-3"></div>
+							</div>
+
+							{{-- joining date --}}
+							<div class="form-group row">
+								<div class="col-md-2"></div>
+								<div class="col-md-2"> <label for="joining_date" style="float: right;">Joining Date :</label> </div>
+								<div class="col-md-5">
+									<input type="date" name="joining_date" value="{{$member->joining_date}}" class="form-control" placeholder="Enter Joining Date" required="">
 								</div>
 								<div class="col-md-3"></div>
 							</div>

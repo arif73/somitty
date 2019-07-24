@@ -182,6 +182,48 @@
 								</div>
 								<div class="col-md-3"></div>
 							</div>
+
+							{{-- profession --}}
+							<div class="form-group row">
+								<div class="col-md-2"></div>
+								<div class="col-md-2"> <label for="profession" style="float: right;">Profession :</label> </div>
+								<div class="col-md-5">
+									<input type="text" name="profession" value="{{ old('profession') }}" class="form-control" placeholder="Enter profession " required="">
+								</div>
+								<div class="col-md-3"></div>
+							</div>
+
+							{{-- Blood Group --}}
+							<div class="form-group row">
+								<div class="col-md-2"></div>
+								<div class="col-md-2"> <label for="blood_group" style="float: right;">Blood Group :</label> </div>
+								<div class="col-md-5">
+									<select name="blood_group" class="form-control" required>
+										<option value=""></option>
+										<option value="A+">A+</option>
+										<option value="A-">A-</option>
+										<option value="B+">B+</option>
+										<option value="B-">B-</option>
+										<option value="AB+">AB+</option>
+										<option value="AB-">AB-</option>
+										<option value="O+">O+</option>
+										<option value="O-">O-</option>
+									</select>
+								</div>
+								<div class="col-md-3"></div>
+							</div>
+
+							{{-- joining date --}}
+							<div class="form-group row">
+								<div class="col-md-2"></div>
+								<div class="col-md-2"> <label for="joining_date" style="float: right;">Joining Date :</label> </div>
+								<div class="col-md-5">
+									<input type="date" name="joining_date" value="{{ old('joining_date') }}" class="form-control" placeholder="Enter Joining Date" required="">
+								</div>
+								<div class="col-md-3"></div>
+							</div>
+
+
 						</div>
 						<!-- /.box-body -->
 
