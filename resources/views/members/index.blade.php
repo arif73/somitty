@@ -62,7 +62,7 @@
                             	<td>
                             		{{ $member->user->status == 1 ? 'Active' : 'Inactive' }}
                             		<span>
-                            			<a href="/change-status/{{$member->user_id}}" class="btn btn-warning btn-sm">Change</a>
+                            			<a href="{{url('change-status/'.$member->user_id)}}" class="btn btn-warning btn-sm">Change</a>
                             		</span>
                             	</td>
                         	    <td>

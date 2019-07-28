@@ -11,14 +11,15 @@ class CashOutController extends Controller
 {
     public function index()
     {	
-    	$cash_out = CashOut::all();
+    	// $cash_out = CashOut::all();
         
-    	return view('cash_out.index', compact('cash_out'));
+    	return view('cash_out.index');
     }
 
     public function create()
     {	
     	$members = Member::select('members.name', 'members.id')
+                           ->where('members.id','!=' ,1)
     					   ->join('users', 'members.user_id', 'users.id')
     					   ->where('users.status', 1)
     					   ->get();
@@ -48,5 +49,14 @@ class CashOutController extends Controller
         BankBalance::find(1)->decrement('total_amount', $total_debit);
 
     	return redirect()->back()->with('msg', 'Cash Out Added!');
+    }
+
+    public function generate(Request $request){
+
+        $from=$request->from_date;
+        $to=$request->to_date;
+        $cash_out = CashOut::whereBetween('date', [$from, $to])->get();
+        
+        return view('cash_out.generate', compact('cash_out'));
     }
 }

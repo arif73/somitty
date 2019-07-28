@@ -30,7 +30,7 @@
                 <div class="col-md-4" style="text-align: center;"><legend>Members Reposts</legend></div>
                 <div class="col-md-4"></div>
             </div>
-            @if(count($reports) > 0)
+            @if(count($cashin) > 0)
 
             <div class="dataTables_wrapper form-inline dt-bootstrap table-responsive">
                 <table class="table table-bordered table-hover text-center" role="grid">
@@ -60,7 +60,7 @@
                     </thead>   
                     <tbody>
                         
-                        @foreach($reports as $report)
+                        @foreach($cashin as $report)
                         <tr>
                             <td>{{ $report->member_id }}</td>
                             <td>{{ $report->member->name }}</td>
@@ -92,7 +92,42 @@
                         @endphp
 
                         @endforeach 
+                         @foreach($cashout as $report)
+                        <tr>
+                            <td>{{ $report->member_id }}</td>
+                            <td>{{ $report->member->name }}</td>
+                            <td>{{ $report->premium }}</td>
+                            <td>{{ $report->in_admistration }}</td>
+                            
+                            <td>{{ $report->profit }}</td>
+                            <td></td>
+                            <td>{{ Carbon\Carbon::parse($report->date)->toDateString() }}</td>
+                            <td>{{ $report->total_credit }}</td>
+                            <td>{{ $report->out_admistration }}</td>
+                            <td>{{ $report->entertainment }}</td>
+                            <td>{{ $report->investment_withdraw }}</td>
+                           
+                            <td>{{ $report->total_debit }}</td>
+                            <td>{{ $report->comments }}</td>
+                            <td>-</td>
+                        </tr>
+                        @php
+                            $in_admistration += $report->in_admistration;
+                            $premium += $report->premium;
+                           
+                            $profit += $report->profit;
+                            $total_credit += $report->total_credit;
+                            $out_admistration += $report->out_admistration;
+                            $entertainment += $report->entertainment;
+                            $investment_withdraw += $report->investment_withdraw;
+                           
+                            $total_debit += $report->total_debit;
+                        @endphp
+
+                        @endforeach 
                         
+
+                       
                         <tr style="font-weight: bold;">
                             <td></td>
                             <td>Total</td>

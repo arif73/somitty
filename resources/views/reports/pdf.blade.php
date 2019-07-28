@@ -36,83 +36,120 @@
     <h3 style="text-align: center;">Members Reposts</h3>
     <table class="table table-striped table-bordered text-center">
         <thead>
-            <tr>
-               <!--  <th colspan="2"></th> -->
-                <th colspan="8">Member Cash In</th>
-                <th colspan="6">Member Cash Out</th>
-            </tr>
-            <tr>
-                <th>id</th>
-                <th>Name</th>
-                <th>Premium</th>
-                <th>Admin</th>
-                <th>Fine</th>
-                <th>Profit</th>
-                <th>Date</th>
-                <th>Total Credit</th>
-                <th>Admin</th>
-                <th>Entertainment</th>
-                <th>Invest. Withdraw</th>
-                
-                <th>Total Debit</th>
-                <th>Comments</th>
-                <th>Banalce</th>
-            </tr>
-        </thead>   
-        <tbody>
-            
-            @foreach($reports as $report)
-            <tr>
-                <td>{{ $report->member->id }}</td>
-                <td>{{ $report->member->name }}</td>
-                <td>{{ $report->premium }}</td>
-                <td>{{ $report->in_admistration }}</td>
-                <td>{{ $report->fine }}</td>
-                <td>{{ $report->profit }}</td>
-                <td>{{ Carbon\Carbon::parse($report->date)->toDateString() }}</td>
-                <td>{{ $report->total_credit }}</td>
-                <td>{{ $report->out_admistration }}</td>
-                <td>{{ $report->entertainment }}</td>
-                <td>{{ $report->investment_withdraw }}</td>
-                
-                <td>{{ $report->total_debit }}</td>
-                <td>{{ $report->comments }}</td>
-                <td>-</td>
-            </tr>
-            @php
-                $in_admistration += $report->in_admistration;
-                $premium += $report->premium;
-                $fine += $report->fine;
-                $profit += $report->profit;
-                $total_credit += $report->total_credit;
-                $out_admistration += $report->out_admistration;
-                $entertainment += $report->entertainment;
-                $investment_withdraw += $report->investment_withdraw;
-               
-                $total_debit += $report->total_debit;
-            @endphp
+                        <tr>
+                            <!-- <th colspan="2"></th> -->
+                            <th colspan="8">Member Cash In</th>
+                            <th colspan="6">Member Cash Out</th>
+                        </tr>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Premium</th>
+                            <th>Admin</th>
+                            <th>Fine</th>
+                            <th>Profit</th>
+                            <th>Date</th>
+                            <th>Total Credit</th>
+                            <th>Admin</th>
+                            <th>Entertainment</th>
+                            <th>Invest. Withdraw</th>
+                          
+                            <th>Total Debit</th>
+                            <th>Comments</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>   
+                    <tbody>
+                        
+                        @foreach($cashin as $report)
+                        <tr>
+                            <td>{{ $report->member_id }}</td>
+                            <td>{{ $report->member->name }}</td>
+                            <td>{{ $report->premium }}</td>
+                            <td>{{ $report->in_admistration }}</td>
+                            <td>{{ $report->fine }}</td>
+                            <td>{{ $report->profit }}</td>
+                            <td>{{ Carbon\Carbon::parse($report->date)->toDateString() }}</td>
+                            <td>{{ $report->total_credit }}</td>
+                            <td>{{ $report->out_admistration }}</td>
+                            <td>{{ $report->entertainment }}</td>
+                            <td>{{ $report->investment_withdraw }}</td>
+                           
+                            <td>{{ $report->total_debit }}</td>
+                            <td>{{ $report->comments }}</td>
+                            <td>-</td>
+                        </tr>
+                        @php
+                            $in_admistration += $report->in_admistration;
+                            $premium += $report->premium;
+                            $fine += $report->fine;
+                            $profit += $report->profit;
+                            $total_credit += $report->total_credit;
+                            $out_admistration += $report->out_admistration;
+                            $entertainment += $report->entertainment;
+                            $investment_withdraw += $report->investment_withdraw;
+                           
+                            $total_debit += $report->total_debit;
+                        @endphp
 
-            @endforeach 
-            
-            <tr style="font-weight: bold;">
-                <td></td>
-                <td></td>
-                <td>Total</td>
-                <td>{{ $premium }}</td>
-                <td>{{ $in_admistration }}</td>
-                <td>{{ $fine }}</td>
-                <td>{{ $profit }}</td>
-                <td style="color: #22af28;">{{ $total_credit }}</td>
-                <td>{{ $out_admistration }}</td>
-                <td>{{ $entertainment }}</td>
-                <td>{{ $investment_withdraw }}</td>
-                
-                <td style="color: red;">{{ $total_debit }}</td>
-                <td></td>
-                <td style="background: #222d32; color: #fff;">{{ $total_credit - $total_debit }}</td>
-            </tr>
-        </tbody>
-    </table>
+                        @endforeach 
+                         @foreach($cashout as $report)
+                        <tr>
+                            <td>{{ $report->member_id }}</td>
+                            <td>{{ $report->member->name }}</td>
+                            <td>{{ $report->premium }}</td>
+                            <td>{{ $report->in_admistration }}</td>
+                            
+                            <td>{{ $report->profit }}</td>
+                            <td></td>
+                            <td>{{ Carbon\Carbon::parse($report->date)->toDateString() }}</td>
+                            <td>{{ $report->total_credit }}</td>
+                            <td>{{ $report->out_admistration }}</td>
+                            <td>{{ $report->entertainment }}</td>
+                            <td>{{ $report->investment_withdraw }}</td>
+                           
+                            <td>{{ $report->total_debit }}</td>
+                            <td>{{ $report->comments }}</td>
+                            <td>-</td>
+                        </tr>
+                        @php
+                            $in_admistration += $report->in_admistration;
+                            $premium += $report->premium;
+                           
+                            $profit += $report->profit;
+                            $total_credit += $report->total_credit;
+                            $out_admistration += $report->out_admistration;
+                            $entertainment += $report->entertainment;
+                            $investment_withdraw += $report->investment_withdraw;
+                           
+                            $total_debit += $report->total_debit;
+                        @endphp
+
+                        @endforeach 
+                        
+
+                       
+                        <tr style="font-weight: bold;">
+                            <td></td>
+                            <td>Total</td>
+                            <td>{{ $premium }}</td>
+                            <td>{{ $in_admistration }}</td>
+                            <td>{{ $fine }}</td>
+                            <td>{{ $profit }}</td>
+                            <td></td>
+                            <td style="color: #22af28;">{{ $total_credit }}</td>
+                            <td>{{ $out_admistration }}</td>
+                            <td>{{ $entertainment }}</td>
+                            <td>{{ $investment_withdraw }}</td>
+                           
+                            <td style="color: red;">{{ $total_debit }}</td>
+                            <td></td>
+                            <td style="background: #222d32; color: #fff;">{{ $total_credit - $total_debit }}</td>
+                        </tr>
+                    </tbody>
+                            
+                </table>
+            </div>
 
     <hr> 
 

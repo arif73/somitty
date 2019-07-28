@@ -11,15 +11,17 @@ class CashInController extends Controller
 {
     public function index()
     {	
-    	$cash_in = CashIn::all();
-    	return view('cash_in.index', compact('cash_in'));
+    	// $cash_in = CashIn::all();
+    	 return view('cash_in.index');
     }
 
     public function create()
     {	
     	$members = Member::select('members.name', 'members.id')
+                           ->where('members.id','!=' ,1)
     					   ->join('users', 'members.user_id', 'users.id')
     					   ->where('users.status', 1)
+
     					   ->get();
     	return view('cash_in.create', compact('members'));
     }
@@ -52,5 +54,15 @@ class CashInController extends Controller
         BankBalance::find(1)->increment('total_amount', $total_credit);
 
     	return redirect()->back()->with('msg', 'Cash In Added!');
+    }
+
+
+    public function generate(Request $request){
+
+        $from=$request->from_date;
+        $to=$request->to_date;
+        $cash_in = CashIn::whereBetween('date', [$from, $to])->get();
+        
+        return view('cash_in.generate', compact('cash_in'));
     }
 }

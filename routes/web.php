@@ -32,11 +32,13 @@ Route::resource('member' ,'MemberController');
 Route::get('cash-in', 'CashInController@index');
 Route::get('cash-in/create', 'CashInController@create');
 Route::post('cash-in/store', 'CashInController@store');
+Route::post('cash-in/generate', 'CashInController@generate');
 
 /*===============   Cash Out   ===================*/
 Route::get('cash-out', 'CashOutController@index');
 Route::get('cash-out/create', 'CashOutController@create');
 Route::post('cash-out/store', 'CashOutController@store');
+Route::post('cash-out/generate', 'CashOutController@generate');
 
 /*===============   Reports   ===================*/
 Route::get('/reports/create', 'ReportController@create');
