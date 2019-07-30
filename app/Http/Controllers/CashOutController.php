@@ -19,7 +19,6 @@ class CashOutController extends Controller
     public function create()
     {	
     	$members = Member::select('members.name', 'members.id')
-                           ->where('members.id','!=' ,1)
     					   ->join('users', 'members.user_id', 'users.id')
     					   ->where('users.status', 1)
     					   ->get();
@@ -42,6 +41,7 @@ class CashOutController extends Controller
     	$cash_out->admistration = $request->admistration;
     	$cash_out->entertainment = $request->entertainment;
         $cash_out->investment_withdraw = $request->investment_withdraw;
+        $cash_out->purpose=$request->purpose;
     	$cash_out->total_debit = $total_debit;
     	$cash_out->save();
 

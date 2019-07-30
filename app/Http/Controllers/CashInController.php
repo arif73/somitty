@@ -18,7 +18,6 @@ class CashInController extends Controller
     public function create()
     {	
     	$members = Member::select('members.name', 'members.id')
-                           ->where('members.id','!=' ,1)
     					   ->join('users', 'members.user_id', 'users.id')
     					   ->where('users.status', 1)
 
@@ -32,9 +31,7 @@ class CashInController extends Controller
     	    'member' => 'required',
     	    'date' => 'required',
     	    'premium' => 'required',
-    	    'admistration' => 'required',
-    	    'fine' => 'required',
-    	    'profit' => 'required',
+    	    
     	]);
 
     	$total_credit = $request->premium + $request->admistration + $request->fine + $request->profit;

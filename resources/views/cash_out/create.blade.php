@@ -97,6 +97,15 @@ integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="ano
 								<div class="col-md-3"></div>
 							</div>
 
+							<div class="form-group row others"  style="display: none;">
+								<div class="col-md-2"></div>
+								<div class="col-md-2"> <label for="investment_withdraw">Purpose :</label> </div>
+								<div class="col-md-5">
+									<textarea name="purpose" class="form-control" placeholder="Enter Purpose" >{{ old('purpose') }}</textarea> 
+								</div>
+								<div class="col-md-3"></div>
+							</div>
+
 							<!-- <div class="form-group row">
 								<div class="col-md-2"></div>
 								<div class="col-md-2"> <label for="others">Others :</label> </div>

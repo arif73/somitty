@@ -66,7 +66,7 @@
 								<div class="col-md-2"></div>
 								<div class="col-md-2"> <label for="admistration">Admistration :</label> </div>
 								<div class="col-md-5">
-									<input type="number" name="admistration" value="{{ old('admistration') }}" class="form-control" required>
+									<input type="number" name="admistration" value="{{ old('admistration') }}" class="form-control" >
 								</div>
 								<div class="col-md-3"></div>
 							</div>
@@ -75,7 +75,7 @@
 								<div class="col-md-2"></div>
 								<div class="col-md-2"> <label for="fine">Fine :</label> </div>
 								<div class="col-md-5">
-									<input type="number" name="fine" value="{{ old('fine') }}" class="form-control" required>
+									<input type="number" name="fine" value="{{ old('fine') }}" class="form-control" >
 								</div>
 								<div class="col-md-3"></div>
 							</div>
@@ -84,7 +84,7 @@
 								<div class="col-md-2"></div>
 								<div class="col-md-2"> <label for="profit">Profit :</label> </div>
 								<div class="col-md-5">
-									<input type="number" name="profit" value="{{ old('profit') }}" class="form-control" required>
+									<input type="number" name="profit" value="{{ old('profit') }}" class="form-control" >
 								</div>
 								<div class="col-md-3"></div>
 							</div>

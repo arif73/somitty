@@ -62,17 +62,23 @@
                             <th>Admistration</th>
                             <th>Entertainment</th>
                             <th>Investment Withdraw</th>
+                            <th>Purpose</th>
                             <th>Total Debit</th>
                         </tr>
                     </thead>
                          @foreach($cash_out as $each)
                          <tr>
                              <td>{{ $each->id }}</td>
+                             @if($each->member_id!==null)
                              <td>{{ $each->member->name }}</td>
+                             @else
+                             <td></td>
+                             @endif
                              <td>{{ $each->date }}</td>
                              <td>{{ $each->admistration }}</td>
                              <td>{{ $each->entertainment }}</td>
                              <td>{{ $each->investment_withdraw }}</td>
+                             <td>{{ $each->purpose}}</td>
                              <td>{{ $each->total_debit }}</td>
                          </tr>
                          @endforeach   

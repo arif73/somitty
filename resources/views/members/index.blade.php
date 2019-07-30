@@ -56,7 +56,7 @@
                         	</td>
                         	<td>{{ $member->name }}</td>
                         	<td>{{ $member->user->email }}</td>
-                        	<td>{{ Carbon\Carbon::parse($member->created_at)->format('Y-m-d') }}</td>
+                        	<td>{{ Carbon\Carbon::parse($member->joining_date)->format('Y-m-d') }}</td>
                         	<td>{{ $member->phone }}</td>
                             @if(Auth::user()->user_role == 1)
                             	<td>

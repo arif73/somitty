@@ -19,10 +19,10 @@ class CreateCashInsTable extends Migration
             $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
             $table->date('date');
             $table->integer('premium');
-            $table->integer('admistration');
-            $table->integer('fine');
-            $table->integer('profit');
-            $table->integer('investment_withdraw');
+            $table->integer('admistration')->nullable();
+            $table->integer('fine')->nullable();
+            $table->integer('profit')->nullable();
+            $table->string('comments')->nullable();
             $table->integer('total_credit');
             $table->timestamps();
         });

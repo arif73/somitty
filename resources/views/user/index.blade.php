@@ -49,11 +49,11 @@
                         	<td>{{ $user->email }}</td>
                         	<td>{{ $user->status == 1 ? 'Active' : 'Inactive' }}
                         		<span>
-                        			<a href="/change-status/{{$user->id}}" class="btn btn-warning btn-sm">Change</a>
+                        			<a href="{{url('/change-status/'.$user->id)}}" class="btn btn-warning btn-sm">Change</a>
                         		</span>
                         	</td>
                         	<td>
-                        		<form action="/change-pass" method="post" class="form-group">
+                        		<form action="{{url('/change-pass')}}" method="post" class="form-group">
                         			@csrf
                         			<input onmouseover="type = 'text'" onmouseout="type = 'password';" type="password" name="password" class="form-control input-sm showPass" required>
                         			<input type="hidden" name="id" value="{{$user->id}}">
