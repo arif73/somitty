@@ -30,7 +30,7 @@
                 <div class="col-md-4" style="text-align: center;"><legend>Members Reposts</legend></div>
                 <div class="col-md-4"></div>
             </div>
-            @if(count($reports) > 0)
+            @if(count($cashin) or count($cashout) > 0)
 
             <div class="dataTables_wrapper form-inline dt-bootstrap table-responsive">
                 <table class="table table-bordered table-hover text-center" role="grid">
@@ -61,10 +61,10 @@
                     </thead>   
                     <tbody>
                         
-                        @foreach($reports as $report)
+                        @foreach($cashin as $report)
                         <tr>
                             <td></td>
-                            <td>{{ Carbon\Carbon::parse($report->date)->toDateString() }}</td>
+                            <td>{{ Carbon\Carbon::parse($report->date)->format('d-M-Y') }}</td>
                             <td>{{ $report->member->name }}</td>
                             <td>{{ $report->premium }}</td>
                             <td>{{ $report->in_admistration }}</td>
@@ -73,12 +73,12 @@
                             <td>{{ $report->total_credit }}</td>
                             <td>{{ $report->comments}}</td>
 
-                            <td>{{ Carbon\Carbon::parse($report->cashout_date)->toDateString() }}</td>
-                            <td>{{ $report->purpose}}</td>
-                            <td>{{ $report->out_admistration }}</td>
-                            <td>{{ $report->entertainment }}</td>
-                            <td>{{ $report->investment_withdraw }}</td>
-                            <td>{{ $report->total_debit }}</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
                             <td>-</td>
                         </tr>
                         @php
@@ -99,14 +99,18 @@
                         <tr>
                             <td></td>
                             <td>-</td>
+                            @if($report->member_id!==null)
+                            <td>{{ $report->member->name }}</td>
+                            @else
+                            <td></td>
+                            @endif
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>
-                            <td>-</td>
-                            <td>{{ $report->date }}</td>
+                           <td> {{ Carbon\Carbon::parse($report->date)->format('d-M-Y') }}</td>
                             <td>{{ $report->purpose}}</td>
                             <td>{{ $report->out_admistration }}</td>
                             <td>{{ $report->entertainment }}</td>
